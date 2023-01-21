@@ -1,0 +1,3 @@
+
+pre-release-checks:
+	pyroma .
