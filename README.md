@@ -41,3 +41,9 @@ Having installed `utterless` you just need to replace that with:
 
     $ python -m utterless discover
 
+Licence
+-------
+
+This software copyright P. S. Clarke and is licensed in accordance
+with the BSD Three-Clause Licence.
+
