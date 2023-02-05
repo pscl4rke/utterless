@@ -41,6 +41,21 @@ Having installed `utterless` you just need to replace that with:
 
     $ python -m utterless discover
 
+Optional Usage
+--------------
+
+Utterless has mechanisms to integrate with some frameworks that
+don't run tests through `unittest` directly.
+
+For example,
+with Django you can specify the Utterless test runner on the command line:
+
+    $ ./manage.py test --testrunner utterless.contrib.django.DiscoverRunner
+
+or by editing `settings.py` to contain:
+
+    TEST_RUNNER = "utterless.contrib.django.DiscoverRunner"
+
 Licence
 -------
 
