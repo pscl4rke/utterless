@@ -3,13 +3,13 @@
 from unittest.main import TestProgram
 from unittest.runner import TextTestRunner
 
-from .results import UtterlessTextTestResult
+from .runner import UtterlessTextTestRunner
 
 
 class UtterlessTestProgram(TestProgram):
 
     def __init__(self, *args, **kwargs):
-        kwargs["testRunner"] = TextTestRunner(resultclass=UtterlessTextTestResult)
+        kwargs["testRunner"] = UtterlessTextTestRunner
         super().__init__(*args, **kwargs)
 
 
