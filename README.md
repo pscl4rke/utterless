@@ -62,3 +62,16 @@ Licence
 This software copyright P. S. Clarke and is licensed in accordance
 with the BSD Three-Clause Licence.
 
+Limitations and Roadmap
+-----------------------
+
+* Currently it completely ignores the `warnings` module,
+so output from that
+(e.g. a `DeprecationWarning` or a `ResourceWarning`)
+will still splurts across the screen.
+I could possibly collect that up during tests and include it
+at the end.
+The complication is that warnings should probably still be emited
+regardless of whether the test passed or failed.
+Treating warnings as errors might be the better option.
+
