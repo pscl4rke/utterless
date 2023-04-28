@@ -37,7 +37,7 @@ class UtterlessTextTestResult(TextTestResult):
         for test, err in errors:
             self.stream.writeln(self.separator1)
             self.stream.writeln("%s: %s" % (flavour, self.getDescription(test)))
-            if test.logHandler.records:
+            if hasattr(test, "logHandler") and test.logHandler.records:
                 self.stream.writeln(self.separator2)
                 for record in test.logHandler.records:
                     self.stream.writeln("%s:%s:%s" % (
