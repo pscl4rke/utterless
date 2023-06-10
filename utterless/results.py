@@ -34,13 +34,13 @@ class UtterlessTextTestResult(TextTestResult):
         super().stopTest(test)
 
     def printErrorList(self, flavour, errors):
+        formatter = logging.Formatter(fmt=logging.BASIC_FORMAT)
         for test, err in errors:
             self.stream.writeln(self.separator1)
             self.stream.writeln("%s: %s" % (flavour, self.getDescription(test)))
             if hasattr(test, "logHandler") and test.logHandler.records:
                 self.stream.writeln(self.separator2)
                 for record in test.logHandler.records:
-                    self.stream.writeln("%s:%s:%s" % (
-                        record.name, record.levelname, record.msg))
+                    self.stream.writeln(formatter.format(record))
             self.stream.writeln(self.separator2)
             self.stream.writeln("%s" % err)
