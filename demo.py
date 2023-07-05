@@ -20,9 +20,11 @@ def square(value):
 class TestDemo(unittest.TestCase):
 
     def test_correct(self):
+        """Docstring will still be shown in output"""
         self.assertEqual(square(3), 9)
 
     def test_incorrect(self):
+        """Docstring will still be shown in output"""
         self.assertEqual(square(3), 10)
 
 
