@@ -1,7 +1,6 @@
 
 
 from unittest.main import TestProgram
-from unittest.runner import TextTestRunner
 
 from .runner import UtterlessTextTestRunner
 
@@ -15,4 +14,3 @@ class UtterlessTestProgram(TestProgram):
 
 if __name__ == "__main__":
     UtterlessTestProgram(module=None)
-    pass
