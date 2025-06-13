@@ -12,5 +12,6 @@ class UtterlessTestProgram(TestProgram):
         super().__init__(*args, **kwargs)
 
 
-def main():
-    UtterlessTestProgram(module=None)
+#def main():
+#    UtterlessTestProgram(module=None)
+main = UtterlessTestProgram
