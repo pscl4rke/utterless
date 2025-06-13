@@ -6,7 +6,7 @@ import unittest
 
 class TestCase(unittest.TestCase):
 
-    def test_that_passes(self):
+    def test_behaviour(self):
         value = "LOGGED MESSAGE"
         logging.critical("Critical notification of %s", value)
         logging.error("Error notification of %s", value)

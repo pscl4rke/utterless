@@ -18,6 +18,13 @@ class CollectingHandler(logging.Handler):
         pass
 
 
+def try_to_format_as_line(formatter, record):
+    try:
+        return formatter.format(record)
+    except Exception as exc:
+        return "Utterless formatting error: %r raised %r" % (record, exc)
+
+
 class UtterlessTextTestResult(TextTestResult):
 
     def startTest(self, test):
@@ -41,6 +48,6 @@ class UtterlessTextTestResult(TextTestResult):
             if hasattr(test, "logHandler") and test.logHandler.records:
                 self.stream.writeln(self.separator2)
                 for record in test.logHandler.records:
-                    self.stream.writeln(formatter.format(record))
+                    self.stream.writeln(try_to_format_as_line(formatter, record))
             self.stream.writeln(self.separator2)
             self.stream.writeln("%s" % err)

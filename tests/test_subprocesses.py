@@ -31,3 +31,11 @@ class TestSubprocesses(unittest.TestCase):
         self.assertIn("LOGGED MESSAGE", output)
         self.assertIn("Critical notification", output)
         self.assertIn("Debug notification", output)
+
+    def test_suite_too_many_placeholders(self):
+        proc = run("suite_too_many_placeholders")
+        self.assertNotEqual(proc.returncode, 0)
+        output = proc.stdout.decode()
+        self.assertIn("\nFAILED (failures=1)\n", output)
+        self.assertIn("TEXT-COMES-BEFORE", output)
+        self.assertIn("TEXT-COMES-AFTER", output)
