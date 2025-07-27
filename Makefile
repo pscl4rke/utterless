@@ -4,7 +4,7 @@ pre-release-checks:
 
 release: export PYTHON_KEYRING_BACKEND := keyring.backends.null.Keyring
 release:
-	test '$(shell python3 setup.py --version)' = '$(shell git describe --tags)'
+	test '$(shell python3 setup.py --version)' = '$(shell git describe)'
 	test ! -d dist
 	python3 setup.py sdist bdist_wheel
 	check-wheel-contents dist
@@ -12,8 +12,6 @@ release:
 	twine upload dist/*
 	mv -i build* *.egg-info dist/.
 	mv dist dist.$$(date +%Y-%m-%d.%H%M%S)
-	@echo
-	@echo Remember to push your git tags too
 
 ####
 
@@ -40,7 +38,7 @@ test-in-container-%:
 	@echo
 	ephemerun \
 		-i "docker.io/library/python:$*" \
-		-v ".:/root/src:ro" \
+		-v "`pwd`:/root/src:ro" \
 		-W "/root" \
 		-S "cp -air ./src/* ." \
 		-S "pip --no-cache-dir install ." \
